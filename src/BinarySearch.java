@@ -6,39 +6,29 @@ public class BinarySearch
     int left = 0;
     int right = elements.length - 1;
     
-    // this is the trickiest part to set up: we want to return as soon as we locate target,
-    // but we also want to repeat until there are no more values to check (i.e. target not found);
-    // this happens when the left index "crosses over" the right index,
-    // which occurs when we check the final remaining element and it's not the target
+
     while (left <= right)
     {
-       // set index to check to the middle index; note that if there is an even
-       // number of elements (and two middle elements), this integer math truncates,
-       // resulting in the "left middle" value chosen as middle
+
        int middle = (left + right) / 2;
        
-       // if target is less than value at current index,
-       // "eliminate" right half by setting the "right" boundary index
-       // to the "middle" index - 1
+
        if (target < elements[middle])
        {
           right = middle - 1;
        }
-       // else, if target is greater than value at current index,
-       // "eliminate" left half by setting the "left" boundary index
-       // to the "middle" index + 1
+
        else if (target > elements[middle])
        {
           left = middle + 1;
        }
-       // else, we found the value!  return the index
+
        else
        {
           return middle;
        }
      }
-     
-     // if value not found, return -1
+
      return -1;
   }
 
